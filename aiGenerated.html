@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: black;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        #question {
+            font-size: 24px;
+            margin: 20px 0;
+        }
+
+        .options button {
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            background-color: #333;
+            color: white;
+            border: none;
+        }
+
+        #result {
+            font-size: 24px;
+            margin: 20px 0;
+            color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div id="question">What is <span id="operand1"></span> + <span id="operand2"></span>?</div>
+    <div class="options">
+        <button id="option1"></button>
+        <button id="option2"></button>
+        <button id="option3"></button>
+        <button id="option4"></button>
+    </div>
+    <div id="result"></div>
+
+    <script>
+        function generateQuestion() {
+            const operand1 = Math.floor(Math.random() * 10) + 1;
+            const operand2 = Math.floor(Math.random() * 10) + 1;
+            const correctAnswer = operand1 + operand2;
+            const options = [correctAnswer];
+
+            while (options.length < 4) {
+                const randomOption = Math.floor(Math.random() * 20) + 1; // Generate random numbers as options
+                if (!options.includes(randomOption)) {
+                    options.push(randomOption);
+                }
+            }
+
+            options.sort(() => Math.random() - 0.5); // Shuffle options
+
+            document.getElementById('operand1').textContent = operand1;
+            document.getElementById('operand2').textContent = operand2;
+            document.getElementById('option1').textContent = options[0];
+            document.getElementById('option2').textContent = options[1];
+            document.getElementById('option3').textContent = options[2];
+            document.getElementById('option4').textContent = options[3];
+
+            const buttons = document.querySelectorAll('.options button');
+            buttons.forEach(button => {
+                button.addEventListener('click', function () {
+                    if (parseInt(button.textContent) === correctAnswer) {
+                        document.getElementById('result').textContent = 'Correct!';
+                    } else {
+                        document.getElementById('result').textContent = 'Incorrect!';
+                    }
+                    setTimeout(() => {
+                        document.getElementById('result').textContent = '';
+                        generateQuestion();
+                    }, 1500); // Display result for 1.5 seconds
+                });
+            });
+        }
+
+        generateQuestion();
+    </script>
+    <div>
+        generate an html file with css and javascript built in that asks a random math question and gives 4 answer choices. If you press the correct button, the screen says "correct" and gives a new question. If you press the wrong button, the screen says "incorrect" and gives a new question
+    </div>
+</body>
+</html>
