@@ -1,4 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("mainStyleSheet").setAttribute("href", localStorage.getItem("storageFile"));
+
+    var styleToggle = document.getElementById("style-toggle-card");
+    styleToggle.addEventListener("click", toggleStyleSheet);
 
     const nightSky = document.querySelector(".night-sky");
 
@@ -23,3 +27,19 @@ document.addEventListener("DOMContentLoaded", function () {
     generateStars();
     
 });
+
+function toggleStyleSheet(){
+    var element = document.getElementById("mainStyleSheet");
+    var currStyle = element.getAttribute("href");
+    var newFile;
+    if(currStyle == "./stars.css"){
+        newFile = "./switched.css";
+    }
+    else{
+        newFile = "./stars.css";
+    }
+    element.setAttribute("href", newFile);
+    // console.log(document.getElementById("mainStyleSheet").getAttribute("href"))
+    localStorage.setItem("storageFile", newFile);
+    console.log(localStorage.getItem("storageFile"));
+}

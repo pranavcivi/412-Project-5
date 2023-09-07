@@ -10,7 +10,7 @@
     align-items: center;
     width: 100vw;
     height: 100vh;
-    background: radial-gradient(circle, rgba(3, 3, 48, 1) 0%, rgba(0, 0, 0, 1) 100%);
+    background: radial-gradient(circle, rgba(3, 3, 48, 1) 30%, rgba(0, 0, 0, 1) 100%);
     background-color: rgb(2, 1, 17);
 }
 
@@ -36,7 +36,6 @@
     animation: blink 2s infinite;
 }
 
-
 .text {
     position: relative;
     color: rgba(255, 255, 255, 0.60);
@@ -44,6 +43,9 @@
     font-size: 400%;
     text-align: center;
     margin-top: 20px;
+    top: -100px;
+}
+.first-text{
     top: -100px;
 }
 .portfolio-title{
@@ -85,6 +87,9 @@
     font-size: 150%;
     text-decoration: none;
 }
+.card:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
 
 
 .card5 img{
@@ -113,6 +118,16 @@
     z-index: 9999;
     width: 200px;
     height: 100px;
+    cursor:pointer;
+}
+.style-card {
+    position:fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    width: 200px;
+    height: 100px;
+    cursor: pointer;
 }
 
 
