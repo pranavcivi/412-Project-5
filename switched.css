@@ -28,6 +28,7 @@ h1 {
 
 
 .card-container {
+    /* display: flex; */
     justify-content: space-around;
     flex-wrap: wrap;
 }
@@ -70,6 +71,8 @@ h1 {
     top: 20px;
     left: 20px;
     z-index: 9999;
+    /* width: 200px;
+    height: 100px; */
     cursor:pointer;
 }
 .style-card {
@@ -77,6 +80,8 @@ h1 {
     top: 20px;
     right: 20px;
     z-index: 9999;
+    /* width: 200px;
+    height: 100px; */
     cursor: pointer;
 }
 
