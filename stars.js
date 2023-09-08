@@ -1,5 +1,7 @@
 window.onload = function() {
-    document.getElementById("mainStyleSheet").setAttribute("href", localStorage.getItem("storageFile"));
+    if(localStorage.getItem("storageFile") != null){
+        document.getElementById("mainStyleSheet").setAttribute("href", localStorage.getItem("storageFile"));
+    }
 
     var styleToggle = document.getElementById("style-toggle-card");
     styleToggle.addEventListener("click", toggleStyleSheet);

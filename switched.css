@@ -23,7 +23,7 @@ body {
     height: 100vh;
     /* background: radial-gradient(ellipse at center, #FFA07A 30%, #FF6347 100%); */
     background: radial-gradient(ellipse at center, #ca7bff 20%, #5eccff 100%);
-    background-color: rgb(2, 1, 17);
+    background-color: #9197e9;
 }
 .night-sky {
     display: flex;
@@ -58,6 +58,8 @@ h1 {
     width: 100%;
     margin-bottom: 5vh;
     text-decoration: none;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 140%;
 }
 
 .card {
@@ -71,8 +73,8 @@ h1 {
     text-decoration: none;
     color: white;
     display: flex;
-    flex-direction: column;
     align-items: center;
+    justify-content: center;
     text-align: center;
 }
 .card1{
@@ -98,6 +100,7 @@ h1 {
 .card6{
     bottom: 20px;
     right: 20px;
+    height: 30vh;
 }
 .card5 img{
     filter: invert();
@@ -145,7 +148,46 @@ h1 {
 }
 
 .text {
-    font-size: 24px;
+    font-size: 300%;
     color: white;
+}
+.project {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    width: 70vw;
+    display: flex; 
+    flex-direction: row;
+    align-items: center;
+    gap: 100px;
+    border-radius: 10px;
+    text-decoration: none;
+}
+.project-container{
+    overflow-y: scroll;
+}
+
+.project1{
+    width: 10vw;
+    height: 10vh;
+}
+.project1 img{
+    max-width: 50%;
+    max-height: 50%;
+    display: block;
+    margin-right: 20px;
+    border-radius: 10px;
+    z-index: 2;
+}
+
+.portfolio-info {
+    display: flex;
+    justify-content:center;
+    width: 100vw; 
+    text-decoration: none;
+    gap: 8px;
+    top: -500px;
 }
 

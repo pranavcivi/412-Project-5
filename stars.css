@@ -97,6 +97,7 @@
     color: rgba(255, 255, 255, 0.40);
     font-size: 150%;
     text-decoration: none;
+    transition: background-color 0.3s ease;
 }
 .card:hover {
     background-color: rgba(255, 255, 255, 0.15);
