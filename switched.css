@@ -186,6 +186,9 @@ h1 {
     height: auto;
     margin-bottom: 20px;
 }
+.project-title{
+    margin-bottom: 5%;
+}
 
 .project img {
     max-width: 50%;
