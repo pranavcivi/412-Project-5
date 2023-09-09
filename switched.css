@@ -5,20 +5,20 @@
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     /* background: radial-gradient(ellipse at center, #FFA07A 30%, #FF6347 100%); */
     background: radial-gradient(ellipse at center, #ffbb00 30%, #00aeff 100%);
     color: white;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /* align-items: center; */
     justify-content: center;
     min-height: 100vh;
 }
 .sky {
     display: flex;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
     width: 100vw;
     height: 100vh;
     /* background: radial-gradient(ellipse at center, #FFA07A 30%, #FF6347 100%); */
@@ -29,7 +29,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    align-items: center;
+    /* align-items: center; */
     position: relative;
     /* width: 100%;
     height: 100%; */
@@ -52,7 +52,7 @@ h1 {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
     gap: 0px;
     max-width:none;
     width: 100%;
@@ -84,6 +84,8 @@ h1 {
 .card2{
     width: 30vw;
     height: 30vh;
+    position: relative;
+    top: 5vh;
 }
 .card3{
     width: 30vw;
@@ -92,10 +94,14 @@ h1 {
 .card4{
     width: 20vw;
     height: 40vh;
+    position: relative;
+    bottom: -5vh;
 }
 .card5{
     width: 15vw;
     height: 15vh;
+    position: relative;
+    top: -4vh;
 }
 .card6{
     bottom: 20px;
@@ -116,6 +122,7 @@ h1 {
 }
 .first-text{
     top: -100px;
+    align-self: center;
 }
 
 .card img {
@@ -161,56 +168,41 @@ h1 {
     display: flex; 
     flex-direction: row;
     align-items: center;
-    gap: 100px;
+    gap: 50px;
     border-radius: 10px;
     text-decoration: none;
 }
-.project-container{
-    overflow-y: scroll;
+.project-container, .service-container {
+    overflow-y: auto;
     width: 100vw;
     height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 10px;
+}
+.project1, .project2, .project3, .project4, .project5, .projectcfg, .projectfll {
+    width: 47.85%;
+    height: auto;
+    margin-bottom: 20px;
 }
 
-.project1 {
-    width: 40vw;
-    height: 50vh; /* Adjust height as needed */
-    left: 10%; /* Adjust x position as needed */
-    top: 10%; /* Adjust y position as needed */
-}
-
-.project2 {
-    width: 30vw;
-    height: 60vh; /* Adjust height as needed */
-    left: 60%; /* Adjust x position as needed */
-    top: 10%; /* Adjust y position as needed */
-}
-
-.project3 {
-    width: 30vw;
-    height: 45vh; /* Adjust height as needed */
-    left: 10%; /* Adjust x position as needed */
-    top: 70%; /* Adjust y position as needed */
-}
-
-.project4 {
-    width: 20vw;
-    height: 40vh; /* Adjust height as needed */
-    left: 60%; /* Adjust x position as needed */
-    top: 70%; /* Adjust y position as needed */
-}
-
-.project5 {
-    width: 15vw;
-    height: 35vh; /* Adjust height as needed */
-    left: 35%; /* Adjust x position as needed */
-    top: 40%; /* Adjust y position as needed */
-}
-
-/* Update CSS for the project images */
 .project img {
-    max-width: 100%; /* Ensure images fit inside their containers */
-    max-height: 100%; /* Ensure images fit inside their containers */
+    max-width: 50%;
+    max-height: auto;
     margin-bottom: 10px;
+    border-radius: 10px;
+}
+.bullet-points{
+    justify-content: space-between;
+}
+.bullet-points p{
+    margin-bottom: 5%;
+}
+.portfolio-title, .qualifications-title, .service-title{
+    align-self: center;
+    margin-top: 5vh;
+    font-size: 400%;
 }
 
 .portfolio-info {
@@ -220,5 +212,17 @@ h1 {
     text-decoration: none;
     gap: 8px;
     top: -500px;
+}
+
+.resume-link{
+    color: rgb(255, 255, 255);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    justify-content: center;
+    font-size: 200%;
+    position: relative;
+    margin-left: 20%;
+}
+.resume-link:hover{
+    background-color: rgba(255, 255, 255, 0.15);
 }
 
