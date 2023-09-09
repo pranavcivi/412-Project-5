@@ -31,8 +31,8 @@ body {
     justify-content: flex-end;
     align-items: center;
     position: relative;
-    width: 100%;
-    height: 100%;
+    /* width: 100%;
+    height: 100%; */
     padding: 0;
     overflow:hidden;
 }
@@ -167,19 +167,50 @@ h1 {
 }
 .project-container{
     overflow-y: scroll;
+    width: 100vw;
+    height: 100vh;
 }
 
-.project1{
-    width: 10vw;
-    height: 10vh;
+.project1 {
+    width: 40vw;
+    height: 50vh; /* Adjust height as needed */
+    left: 10%; /* Adjust x position as needed */
+    top: 10%; /* Adjust y position as needed */
 }
-.project1 img{
-    max-width: 50%;
-    max-height: 50%;
-    display: block;
-    margin-right: 20px;
-    border-radius: 10px;
-    z-index: 2;
+
+.project2 {
+    width: 30vw;
+    height: 60vh; /* Adjust height as needed */
+    left: 60%; /* Adjust x position as needed */
+    top: 10%; /* Adjust y position as needed */
+}
+
+.project3 {
+    width: 30vw;
+    height: 45vh; /* Adjust height as needed */
+    left: 10%; /* Adjust x position as needed */
+    top: 70%; /* Adjust y position as needed */
+}
+
+.project4 {
+    width: 20vw;
+    height: 40vh; /* Adjust height as needed */
+    left: 60%; /* Adjust x position as needed */
+    top: 70%; /* Adjust y position as needed */
+}
+
+.project5 {
+    width: 15vw;
+    height: 35vh; /* Adjust height as needed */
+    left: 35%; /* Adjust x position as needed */
+    top: 40%; /* Adjust y position as needed */
+}
+
+/* Update CSS for the project images */
+.project img {
+    max-width: 100%; /* Ensure images fit inside their containers */
+    max-height: 100%; /* Ensure images fit inside their containers */
+    margin-bottom: 10px;
 }
 
 .portfolio-info {
