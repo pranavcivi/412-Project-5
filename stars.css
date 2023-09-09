@@ -189,10 +189,10 @@
 }
 
 .projectcfg img{
-    max-width: 20%;
-    max-height: 20%;
+    max-width: 40%;
+    max-height: 40%;
     display: block;
-    border-radius: 3%;
+    border-radius: 10px;
 }
 .project1 img {
     max-width: 50%;
