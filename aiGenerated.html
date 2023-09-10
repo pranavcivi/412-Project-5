@@ -3,95 +3,185 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Math Quiz</title>
+    <title>Math Quiz Game</title>
     <style>
         body {
+            background-color: #333;
+            color: #fff;
             font-family: Arial, sans-serif;
             text-align: center;
-            background-color: black;
-            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
             margin: 0;
-            padding: 0;
+            gap: 5vh;
         }
 
-        #question {
-            font-size: 24px;
-            margin: 20px 0;
+        #quiz-container {
+            background-color: #444;
+            border-radius: 10px;
+            padding: 20px;
+            width: 400px;
+            margin-top: 20px;
         }
 
-        .options button {
-            font-size: 18px;
-            padding: 10px 20px;
-            margin: 5px;
+        #score {
+            float: right;
+        }
+
+        .choice {
+            display: inline-block;
+            background-color: #555;
+            color: #fff;
+            padding: 10px;
+            margin: 10px;
             cursor: pointer;
-            background-color: #333;
-            color: white;
-            border: none;
+            border-radius: 5px;
+        }
+
+        .choice:hover {
+            background-color: #666;
         }
 
         #result {
-            font-size: 24px;
-            margin: 20px 0;
-            color: yellow;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        #play-again-button, #back-button {
+            display: none;
+            background-color: #008CBA;
+            color: #fff;
+            padding: 10px 20px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #play-again-button:hover, #back-button:hover {
+            background-color: #005F7D;
+        }
+
+        #instruction-container {
+            background-color: #444;
+            border-radius: 10px;
+            padding: 1vh;
+            width: 90%; /* Adjusted width to almost fit the screen */
+            /* max-width: 800px; Maximum width for readability */
         }
     </style>
 </head>
 <body>
-    <div id="question">What is <span id="operand1"></span> + <span id="operand2"></span>?</div>
-    <div class="options">
-        <button id="option1"></button>
-        <button id="option2"></button>
-        <button id="option3"></button>
-        <button id="option4"></button>
+    <div id="quiz-container">
+        <div id="score">Score: <span id="score-count">0</span></div>
+        <h1>Math Quiz Game</h1>
+        <p id="question"></p>
+        <div class="choice" onclick="checkAnswer(this)"></div>
+        <div class="choice" onclick="checkAnswer(this)"></div>
+        <div class="choice" onclick="checkAnswer(this)"></div>
+        <div class="choice" onclick="checkAnswer(this)"></div>
+        <p id="result"></p>
+        <p id="final-score"></p>
+        <button id="play-again-button" onclick="playAgain()">Play Again</button>
+        <button id="back-button" onclick="goToIndex()">Back</button>
     </div>
-    <div id="result"></div>
+
+    <div id="instruction-container">
+        <p>Design an HTML file with built-in CSS and JavaScript.</p>
+        <p>It should ask the user a random addition, subtraction, multiplication, or division problem.</p>
+        <p>Have a counter in the top right corner of the page that displays the current number of correct answers.</p>
+        <p>There should be 4 answer choices with one correct answer. When the user clicks the correct answer, the page should display "correct" and then provide a new question with 4 new answer choices.</p>
+        <p>When the user clicks the wrong answer, the page should display "incorrect - game over". It should then display the score, which is the number of questions they answered correctly.</p>
+        <p>It should stop generating new questions when the file displays "game over".</p>
+        <p>There is no need to make sure the math question or the answer choices are unique each time; there can be repeats.</p>
+        <p>Style the page in an aesthetically pleasing way but give it a darker theme.</p>
+        <p>Ensure there is always one and only one correct answer choice provided.</p>
+        <p>Display "correct" for only a second when the user enters a correct answer.</p>
+        <p>Have the UI centered in the middle of the page.</p>
+        <p>include a button that is styled in a similar fasion to the UI on the page that takes the user back to "./index.html" Name is "Back"</p>
+    </div>
 
     <script>
+        let score = 0;
+        let gameOver = false;
+
         function generateQuestion() {
-            const operand1 = Math.floor(Math.random() * 10) + 1;
-            const operand2 = Math.floor(Math.random() * 10) + 1;
-            const correctAnswer = operand1 + operand2;
-            const options = [correctAnswer];
+            if (!gameOver) {
+                const num1 = Math.floor(Math.random() * 10) + 1;
+                const num2 = Math.floor(Math.random() * 10) + 1;
+                const operator = ['+', '-', '*', '/'][Math.floor(Math.random() * 4)];
 
-            while (options.length < 4) {
-                const randomOption = Math.floor(Math.random() * 20) + 1; // Generate random numbers as options
-                if (!options.includes(randomOption)) {
-                    options.push(randomOption);
-                }
-            }
+                const correctAnswer = eval(num1 + operator + num2);
 
-            options.sort(() => Math.random() - 0.5); // Shuffle options
+                document.getElementById("question").textContent = `${num1} ${operator} ${num2} = ?`;
 
-            document.getElementById('operand1').textContent = operand1;
-            document.getElementById('operand2').textContent = operand2;
-            document.getElementById('option1').textContent = options[0];
-            document.getElementById('option2').textContent = options[1];
-            document.getElementById('option3').textContent = options[2];
-            document.getElementById('option4').textContent = options[3];
+                const choices = document.querySelectorAll(".choice");
+                const correctChoiceIndex = Math.floor(Math.random() * 4);
 
-            const buttons = document.querySelectorAll('.options button');
-            buttons.forEach(button => {
-                button.addEventListener('click', function () {
-                    if (parseInt(button.textContent) === correctAnswer) {
-                        document.getElementById('result').textContent = 'Correct!';
+                choices.forEach((choice, index) => {
+                    if (index === correctChoiceIndex) {
+                        choice.textContent = correctAnswer;
+                        choice.dataset.correct = "true";
                     } else {
-                        document.getElementById('result').textContent = 'Incorrect!';
+                        let incorrectAnswer;
+                        do {
+                            incorrectAnswer = generateIncorrectAnswer(correctAnswer);
+                        } while (incorrectAnswer === correctAnswer);
+                        choice.textContent = incorrectAnswer;
+                        choice.dataset.correct = "false";
                     }
-                    setTimeout(() => {
-                        document.getElementById('result').textContent = '';
-                        generateQuestion();
-                    }, 1500); // Display result for 1.5 seconds
                 });
-            });
+            }
+        }
+
+        function generateIncorrectAnswer(correctAnswer) {
+            let incorrectAnswer;
+            do {
+                incorrectAnswer = Math.floor(Math.random() * 20) + 1;
+            } while (incorrectAnswer === correctAnswer);
+            return incorrectAnswer;
+        }
+
+        function checkAnswer(choice) {
+            if (!gameOver) {
+                const isCorrect = choice.dataset.correct === "true";
+                if (isCorrect) {
+                    score++;
+                    document.getElementById("result").textContent = "Correct!";
+                    setTimeout(() => {
+                        document.getElementById("result").textContent = "";
+                    }, 1000); // Display "Correct!" for 1 second
+                } else {
+                    gameOver = true;
+                    document.getElementById("result").textContent = "Incorrect - Game Over";
+                    document.getElementById("final-score").textContent = `Your Score: ${score}`;
+                    document.getElementById("question").textContent = "Game Over!";
+                    document.getElementById("play-again-button").style.display = "block";
+                    document.getElementById("back-button").style.display = "block";
+                }
+                generateQuestion();
+                document.getElementById("score-count").textContent = score;
+            }
+        }
+
+        function playAgain() {
+            score = 0;
+            gameOver = false;
+            document.getElementById("score-count").textContent = score;
+            document.getElementById("final-score").textContent = "";
+            document.getElementById("play-again-button").style.display = "none";
+            document.getElementById("back-button").style.display = "none";
+            generateQuestion();
+        }
+
+        function goToIndex() {
+            window.location.href = "./index.html";
         }
 
         generateQuestion();
     </script>
-    <div>
-        generate an html file with css and javascript built in that asks a random math question and gives 4 answer choices.<br>
-        If you press the correct button, the screen says "correct" and gives a new question.<br>
-        If you press the wrong button, the screen says "incorrect" and gives a new question
-    </div>
-    
 </body>
 </html>
