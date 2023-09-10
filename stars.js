@@ -1,4 +1,5 @@
 window.onload = function() {
+    // if not first time opening page, set stylesheet to storage file
     if(localStorage.getItem("storageFile") != null){
         document.getElementById("mainStyleSheet").setAttribute("href", localStorage.getItem("storageFile"));
     }
@@ -6,7 +7,6 @@ window.onload = function() {
     var styleToggle = document.getElementById("style-toggle-card");
     styleToggle.addEventListener("click", toggleStyleSheet);
 
-    // document.querySelector("style-toggle-card").addEventListener("click", toggleStyleSheet);
     const nightSky = document.querySelector(".night-sky");
     const textContainer = document.querySelector(".text.first-text");
 
@@ -49,6 +49,7 @@ window.onload = function() {
     
 };
 
+// function to change the stylesheet and store the name of the stylesheet into the local storage
 function toggleStyleSheet(){
     var element = document.getElementById("mainStyleSheet");
     var currStyle = element.getAttribute("href");
@@ -60,7 +61,6 @@ function toggleStyleSheet(){
         newFile = "./stars.css";
     }
     element.setAttribute("href", newFile);
-    // console.log(document.getElementById("mainStyleSheet").getAttribute("href"))
     localStorage.setItem("storageFile", newFile);
     console.log(localStorage.getItem("storageFile"));
 }
